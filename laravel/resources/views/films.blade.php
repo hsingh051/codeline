@@ -36,6 +36,9 @@
             <div class="content">
                 <div class="col-sm-8 col-sm-offset-2">
                     <h3>Films <a class="btn btn-primary" style="float: right; margin-bottom: 10px;" href="<?php echo url('/film/create');?>">Create New</a></h3>
+                    @if(Session::has('success'))
+                        <p class="alert {{ Session::get('alert-class', 'alert-success') }}">{{ Session::get('success') }}</p>
+                    @endif
                     <table class="table table-bordered filmstb">
                       <thead>
                         <tr>
@@ -48,8 +51,10 @@
                         </tr>
                       </thead>
                       <tbody>
+                        
                       </tbody>
                     </table>
+                    <div class="nptr">No Record found!</div>
                 </div>      
             </div>
         </div>
@@ -65,9 +70,11 @@
                 success: function(result){
                     dataobj = JSON.parse(result);
                     if(dataobj.status_code == 200){
+                        $(".nptr").css('display','none');
+                        //alert("F");
                         var i = 1;
                         dataobj.result.forEach(function(element) {                          
-                          $(".filmstb tbody").append("<tr><td>"+i+"</td><td><a href='"+siteurl+"/films/"+element.slug+"'>"+element.name+"</a></td><td>"+element.description+"</td><td>"+element.realease_date+"</td><td>"+element.rating+"/5</td><td>$"+element.ticket_price+"</td></tr>")
+                          $(".filmstb tbody").append("<tr><td>"+i+"</td><td><a href='"+siteurl+"/films/"+element.slug+"'>"+element.name+"</a></td><td>"+element.description.substring(0, 20)+"</td><td>"+element.realease_date+"</td><td>"+element.rating+"/5</td><td>$"+element.ticket_price+"</td></tr>")
                           i++;   
                         });
                         
@@ -77,7 +84,7 @@
                           pageNumbers: true
                         });
                     }else{
-                        alert("No Result");
+                        //alert("No Result");
                     }
                     //$("#div1").html(result);
                 }

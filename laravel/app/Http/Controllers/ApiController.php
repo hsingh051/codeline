@@ -19,15 +19,15 @@ class ApiController extends Controller{
 
   public function getFilms(){
 
-    $result = Films::all();
-    if(!empty($result)){
+    $result = Films::orderBy('id','desc')->get();
+    if($result->count() >= 1){
       $return = array('result' => $result,'status_code'=>200);
       exit(json_encode($return));
     }else{
-      $return = array('result' => 'No State found','status_code'=>204);
+      $return = array('result' => 'No Record found!','status_code'=>204);
       exit(json_encode($return));
     }
 
   }
-  
+
 }

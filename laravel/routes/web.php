@@ -29,4 +29,6 @@ Route::get('/home', function () {
 	return redirect('/films');
 });
 Route::get('film/create', 'HomeController@addFilm')->middleware('auth');
+Route::post('film/add', 'HomeController@saveFilm')->middleware('auth');
+Route::post('comment/add', 'HomeController@saveComment')->middleware('auth');
 //Route::get('/home', 'HomeController@index')->name('home');

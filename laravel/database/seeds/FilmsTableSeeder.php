@@ -35,6 +35,8 @@ class FilmsTableSeeder extends Seeder
             	'country' => 'India',
             	'genre' => 'Action, Comedy',
             	'photo' => '',
+            	'created_at' => date("Y-m-d H:i:s"),
+            	'updated_at' => date("Y-m-d H:i:s"),
             ]);
 
             $film_id = DB::getPdo()->lastInsertId();
@@ -43,7 +45,10 @@ class FilmsTableSeeder extends Seeder
            		'film_id' => $film_id,
             	'user_id' => $user_id,
             	'name' => str_random(10),
-            	'comment' => $randomString
+            	'comment' => $randomString,
+            	'created_at' => date("Y-m-d H:i:s"),
+            	'updated_at' => date("Y-m-d H:i:s"),
+
             ]);
         }
     }

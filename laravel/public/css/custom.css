@@ -58,3 +58,15 @@
     padding:10px;
     border-bottom: 1px solid;
 }
+.filmstb{
+    margin-bottom: 0px;
+}
+.nptr{
+    padding: 10px;
+    border-bottom: 1px solid grey;
+    border-right: 1px solid grey;
+    border-left: 1px solid grey;
+}
+.filmstb th{
+    text-align: center;
+}
