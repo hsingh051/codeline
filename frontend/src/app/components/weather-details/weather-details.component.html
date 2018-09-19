@@ -1,0 +1,15 @@
+<br>
+<br>
+<div class="container">
+	<h2>{{city}}</h2><br>
+	<ul class="listdays">
+	    <li *ngFor="let daytemp of consolidated_weather">
+	      <span class="todate">{{ toDate(daytemp.applicable_date) }}</span>
+	      <img width="50" src="https://www.metaweather.com/static/img/weather/{{ daytemp.weather_state_abbr }}.svg">
+	      {{ daytemp.weather_state_name }}
+	      <span class="maintemp">{{ toNumber(daytemp.the_temp)}}&#8451;</span>
+		  <span class="maxtemp">Max Temp: {{ toNumber(daytemp.max_temp)}}&#8451;</span>
+		  <span class="mintemp">Min Temp: {{ toNumber(daytemp.min_temp)}}&#8451;</span>
+	    </li>
+	  </ul>
+</div>
